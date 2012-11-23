@@ -37,7 +37,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>1</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -465,294 +465,291 @@
        <attribute name="title">
         <string>Paramètres</string>
        </attribute>
-       <widget class="QGroupBox" name="groupBox">
-        <property name="geometry">
-         <rect>
-          <x>10</x>
-          <y>20</y>
-          <width>491</width>
-          <height>456</height>
-         </rect>
-        </property>
-        <property name="title">
-         <string>Paramètres Machine</string>
-        </property>
-        <widget class="QComboBox" name="comboBoxUnite">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>50</y>
-           <width>111</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <item>
-          <property name="text">
-           <string>mm</string>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <item>
+         <widget class="QGroupBox" name="groupBox">
+          <property name="title">
+           <string>Paramètres Machine</string>
           </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Inch</string>
+          <layout class="QHBoxLayout" name="horizontalLayout_10">
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_7">
+             <item>
+              <layout class="QVBoxLayout" name="verticalLayout_6">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_5">
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_6">
+                   <item>
+                    <widget class="QComboBox" name="comboBoxUnite">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::RightToLeft</enum>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>mm</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Inch</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label">
+                     <property name="text">
+                      <string>Unité Machine</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_7">
+                   <item>
+                    <widget class="QComboBox" name="comboBoxType">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::RightToLeft</enum>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Absolues</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Relatifs</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_2">
+                     <property name="text">
+                      <string>Types de déplacements</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_8">
+                   <item>
+                    <widget class="QComboBox" name="comboBoxPlan">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::RightToLeft</enum>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>XY</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>XZ</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>YZ</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_3">
+                     <property name="text">
+                      <string>Choix du plan de travail</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                 <item>
+                  <layout class="QHBoxLayout" name="horizontalLayout_9">
+                   <item>
+                    <widget class="QComboBox" name="comboBoxCoordonees">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="layoutDirection">
+                      <enum>Qt::RightToLeft</enum>
+                     </property>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 1</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 2</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 3</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 4</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 5</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 6</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 7</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 8</string>
+                      </property>
+                     </item>
+                     <item>
+                      <property name="text">
+                       <string>Origine piece 9</string>
+                      </property>
+                     </item>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QLabel" name="label_4">
+                     <property name="text">
+                      <string>Choix du système de coordonnées</string>
+                     </property>
+                    </widget>
+                   </item>
+                  </layout>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <widget class="QCheckBox" name="checkBox">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>Vitesse rapide pour la simulation</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_5">
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_3">
+                 <item>
+                  <widget class="QLabel" name="label_5">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Header</string>
+                   </property>
+                   <property name="margin">
+                    <number>0</number>
+                   </property>
+                   <property name="indent">
+                    <number>100</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTextEdit" name="HeadertextEdit"/>
+                 </item>
+                </layout>
+               </item>
+               <item>
+                <layout class="QVBoxLayout" name="verticalLayout_4">
+                 <item>
+                  <widget class="QLabel" name="label_6">
+                   <property name="font">
+                    <font>
+                     <pointsize>12</pointsize>
+                     <weight>75</weight>
+                     <italic>true</italic>
+                     <bold>true</bold>
+                    </font>
+                   </property>
+                   <property name="text">
+                    <string>Ender</string>
+                   </property>
+                   <property name="indent">
+                    <number>100</number>
+                   </property>
+                  </widget>
+                 </item>
+                 <item>
+                  <widget class="QTextEdit" name="EnderTextEdit"/>
+                 </item>
+                </layout>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="KPixmapRegionSelectorWidget" name="kpixmapregionselectorwidget_2">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
           </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>50</y>
-           <width>101</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Unité Machine</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBoxType">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>80</y>
-           <width>111</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <item>
-          <property name="text">
-           <string>Absolues</string>
+          <property name="pixmap">
+           <pixmap>image/hye4putk.png</pixmap>
           </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Relatifs</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_2">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>80</y>
-           <width>141</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Types de déplacements</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBoxPlan">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>110</y>
-           <width>111</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <item>
-          <property name="text">
-           <string>XY</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>XZ</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>YZ</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_3">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>110</y>
-           <width>201</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Choix du plan de travail</string>
-         </property>
-        </widget>
-        <widget class="QComboBox" name="comboBoxCoordonees">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>140</y>
-           <width>111</width>
-           <height>24</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <item>
-          <property name="text">
-           <string>Origine piece 1</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 2</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 3</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 4</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 5</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 6</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 7</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 8</string>
-          </property>
-         </item>
-         <item>
-          <property name="text">
-           <string>Origine piece 9</string>
-          </property>
-         </item>
-        </widget>
-        <widget class="QLabel" name="label_4">
-         <property name="geometry">
-          <rect>
-           <x>140</x>
-           <y>140</y>
-           <width>191</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="text">
-          <string>Choix du système de coordonnées</string>
-         </property>
-        </widget>
-        <widget class="QCheckBox" name="checkBox">
-         <property name="geometry">
-          <rect>
-           <x>40</x>
-           <y>190</y>
-           <width>211</width>
-           <height>21</height>
-          </rect>
-         </property>
-         <property name="layoutDirection">
-          <enum>Qt::RightToLeft</enum>
-         </property>
-         <property name="text">
-          <string>Vitesse rapide pour la simulation</string>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="HeadertextEdit">
-         <property name="geometry">
-          <rect>
-           <x>15</x>
-           <y>265</y>
-           <width>221</width>
-           <height>176</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QTextEdit" name="EnderTextEdit">
-         <property name="geometry">
-          <rect>
-           <x>255</x>
-           <y>265</y>
-           <width>221</width>
-           <height>176</height>
-          </rect>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_5">
-         <property name="geometry">
-          <rect>
-           <x>95</x>
-           <y>240</y>
-           <width>56</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>true</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Header</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_6">
-         <property name="geometry">
-          <rect>
-           <x>335</x>
-           <y>240</y>
-           <width>54</width>
-           <height>15</height>
-          </rect>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>12</pointsize>
-           <weight>75</weight>
-           <italic>true</italic>
-           <bold>true</bold>
-          </font>
-         </property>
-         <property name="text">
-          <string>Ender</string>
-         </property>
-        </widget>
-       </widget>
-       <widget class="KPixmapRegionSelectorWidget" name="kpixmapregionselectorwidget_2">
-        <property name="geometry">
-         <rect>
-          <x>495</x>
-          <y>35</y>
-          <width>531</width>
-          <height>431</height>
-         </rect>
-        </property>
-        <property name="pixmap">
-         <pixmap>image/hye4putk.png</pixmap>
-        </property>
-       </widget>
+         </widget>
+        </item>
+       </layout>
       </widget>
      </widget>
     </item>
@@ -764,7 +761,7 @@
      <x>0</x>
      <y>0</y>
      <width>1045</width>
-     <height>21</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFichier">
