@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1045</width>
-    <height>545</height>
+    <height>546</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -37,7 +37,7 @@
        <bool>false</bool>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="elideMode">
        <enum>Qt::ElideNone</enum>
@@ -54,7 +54,7 @@
             <item>
              <widget class="QTextEdit" name="InputTextEdit">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -73,7 +73,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QSlider" name="verticalSlider">
+             <widget class="Qslid" name="verticalSlider">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -131,7 +131,7 @@
                 <bool>true</bool>
                </property>
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                  <horstretch>0</horstretch>
                  <verstretch>0</verstretch>
                 </sizepolicy>
@@ -173,7 +173,7 @@
             <item>
              <widget class="QTextEdit" name="TransformTextEdit">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Expanding">
+               <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
@@ -700,7 +700,14 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTextEdit" name="HeadertextEdit"/>
+                  <widget class="QTextEdit" name="HeadertextEdit">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -725,7 +732,14 @@
                   </widget>
                  </item>
                  <item>
-                  <widget class="QTextEdit" name="EnderTextEdit"/>
+                  <widget class="QTextEdit" name="EnderTextEdit">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
                  </item>
                 </layout>
                </item>
@@ -824,6 +838,11 @@
    <class>KPixmapRegionSelectorWidget</class>
    <extends>QWidget</extends>
    <header>kpixmapregionselectorwidget.h</header>
+  </customwidget>
+  <customwidget>
+   <class>Qslid</class>
+   <extends>QSlider</extends>
+   <header>qslid.h</header>
   </customwidget>
  </customwidgets>
  <resources/>
