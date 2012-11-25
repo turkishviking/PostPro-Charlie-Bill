@@ -122,8 +122,6 @@ class GLWidget(QtOpenGL.QGLWidget):
         ymax= (listeMinMax[1]-listeMinMax[4] )*Decimal(1.5)
         zmax= (listeMinMax[2]-listeMinMax[5] )*Decimal(1.5)
       
-        print ((listeMinMax))
-        print(x, y, z)
         gluLookAt(xmax,ymax,zmax,x,y,z,0,0,1)
         glMatrixMode(GL_MODELVIEW)
 

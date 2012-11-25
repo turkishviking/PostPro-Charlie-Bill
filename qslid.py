@@ -9,4 +9,4 @@ class Qslid(QtGui.QSlider):
 
     def resizeEvent(self, evt=None):
         self.emit(SIGNAL("resize()"))
-      
+        

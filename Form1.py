@@ -59,6 +59,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+
         self.liste3D = []
         self.Stock_C = 0
         self.listeCalcul = []
@@ -71,7 +72,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #---------------------------------\\\\\\------Traitement des données------///////------------------------------#
         #-----------------------------------------------------Prend l'outil----------------------------------------------------#
         
-        for ligne in self.liste:
+        listeT = self.liste
+        for ligne in listeT:
             self.progressBar.setValue( self.progressBar.value()+1)
             if "LOADTL/" in ligne:
                 self.listeCalcul .append("M5")
@@ -93,14 +95,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #---------------------------------Affiche les 28 premier élement de la liste-----------------------------#
         self.verticalSlider_2.setMaximum(len(self.listeCalcul ))
-        try:
-            for g in range(28):
-                self.listeCalcul [g]=str(self.listeCalcul [g]).replace("\r\n", "")
-                self.progressBar.setValue(self.progressBar.value()+1)
-                self.TransformTextEdit.append(self.listeCalcul [g])
-        except (NameError,  IndexError):
-            pass
-            
+        self.AfficheTransform()
+        print(len(self.liste))
+        print(len(self.listeCalcul))
     """--------------------------------------------------------------------------------------Header, Ender------------------------------------------------------------------------------------------------------"""
 
     #-------------------------------------------------------Header-----------------------------------------------------#
@@ -185,26 +182,35 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.coordonnees = "G59.3"
         self.Header()
         
-        
-    """----------------------------------------------------------------------------------------------------Mise a jour quand Resize----------------------------------------------------------------------------------------------"""
-    def resizedW(self):
-        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
-        try:
-            self.TransformTextEdit.clear()
-            for g in range(self.verticalSlider_2.value(), self.verticalSlider_2.value()+ self.NbrLigneAffiche):
-                self.listeCalcul [g] = str(self.listeCalcul [g]).replace("\r\n", "")
-                self.TransformTextEdit.append(self.listeCalcul [g])
-        except AttributeError:
-            pass
-            
+    """----------------------------------------------------------------------------------------Affichage des TextBOx----------------------------------------------------------------------------------------------------------"""
+    def AfficheInput(self):
         try:
             self.InputTextEdit.clear()
             for g in range(self.verticalSlider.value(), self.verticalSlider.value()+ self.NbrLigneAffiche):
                 self.liste[g] = self.liste[g].replace("\r\n", "")
                 self.InputTextEdit.append(self.liste[g])
-        except AttributeError:
+        except (AttributeError,  IndexError):
             pass
-        print(self.NbrLigneAffiche)
+            
+    def AfficheTransform(self):
+        try:
+            self.TransformTextEdit.clear()
+            for g in range(self.verticalSlider_2.value(), self.verticalSlider_2.value()+ self.NbrLigneAffiche):
+                self.listeCalcul [g] = str(self.listeCalcul [g]).replace("\r\n", "")
+                self.TransformTextEdit.append(self.listeCalcul [g])
+        except (AttributeError,  IndexError):
+            pass
+        
+        
+    """----------------------------------------------------------------------------------------------------Mise a jour quand Resize----------------------------------------------------------------------------------------------"""
+    def resizedW(self):
+        self.update()
+        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
+        self.AfficheInput()
+        self.AfficheTransform()
+            
+        
+       
         
     """--------------------------------------------------------------------------------------------------Gestion des slider------------------------------------------------------------------------------------------"""
     @pyqtSignature("int")
@@ -212,31 +218,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        try:
-            self.InputTextEdit.clear()
-            for g in range(self.verticalSlider.value(), self.verticalSlider.value()+ self.NbrLigneAffiche):
-                self.liste[g] = self.liste[g].replace("\r\n", "")
-                self.InputTextEdit.append(self.liste[g])
-            self.spinBox.setMaximum(len(self.liste))
-            self.spinBox.setValue(self.verticalSlider.value())
-        except (NameError,  IndexError,  AttributeError):
-            pass
+        self.AfficheInput()
+        self.spinBox.setMaximum(len(self.liste))
+        self.spinBox.setValue(self.verticalSlider.value())
+
             
     @pyqtSignature("int")
     def on_verticalSlider_2_valueChanged(self, value):
         """
         Slot documentation goes here.
         """
+        self.AfficheTransform()
+        self.spinBox_2.setMaximum(len(self.listeCalcul ))
+        self.spinBox_2.setValue(self.verticalSlider_2.value())
 
-        try:
-            self.TransformTextEdit.clear()
-            for g in range(self.verticalSlider_2.value(), self.verticalSlider_2.value()+ self.NbrLigneAffiche):
-                self.listeCalcul [g] = str(self.listeCalcul [g]).replace("\r\n", "")
-                self.TransformTextEdit.append(self.listeCalcul [g])
-            self.spinBox_2.setMaximum(len(self.listeCalcul ))
-            self.spinBox_2.setValue(self.verticalSlider_2.value())
-        except (NameError,  IndexError,  AttributeError):
-            pass
     """---------------------------------------------------------------------------------------------------Gestion des spinBox-------------------------------------------------------------------------------------------"""
     @pyqtSignature("int")
     def on_spinBox_valueChanged(self, p0):
@@ -322,10 +317,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.AptLen = len(self.liste)
             self.verticalSlider.setMaximum(self.AptLen)
             #----------------------------------------Affiche les élement de la liste-----------------------------------------#
-            self.InputTextEdit.clear()
-            for g in range(self.NbrLigneAffiche):
-                self.liste[g] = self.liste[g].replace("\r\n", "")
-                self.InputTextEdit.append(self.liste[g])
+            self.AfficheInput()
+     
                
             #--------------------------------------------------Referme le fichier-----------------------------------------------#
             fichier.close()
@@ -353,11 +346,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.AptLen = len(self.liste)
             self.verticalSlider.setMaximum(self.AptLen)
             #---------------------------------------Affiche les élement de la liste------------------------------------------#
-            self.InputTextEdit.clear()
-            for g in range(self.NbrLigneAffiche):
-                self.liste[g] = self.liste[g].replace("\r\n", "")
-                self.InputTextEdit.append(self.liste[g])
-                self.progressBar.setValue(self.progressBar.value()+1)
+            self.AfficheInput()
+    
             #--------------------------------------------------Referme le fichier-----------------------------------------------#
             fichier.close()
             self.progressBar.setValue(0)
@@ -395,13 +385,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def Extraction(self, ligne,  Bol_Calcul):
         ligne = ligne.replace("GOTO", "")
         ligne = ligne.replace("/", "")
-        self.liste = ligne.split(",")
-        X = Decimal(self.liste[0])
-        Y = Decimal(self.liste[1])
-        Z = Decimal(self.liste[2])
-        I = Decimal(self.liste[3])
-        J = Decimal(self.liste[4])
-        K = Decimal(self.liste[5])
+        self.listeValeur = ligne.split(",")
+        X = Decimal(self.listeValeur[0])
+        Y = Decimal(self.listeValeur[1])
+        Z = Decimal(self.listeValeur[2])
+        I = Decimal(self.listeValeur[3])
+        J = Decimal(self.listeValeur[4])
+        K = Decimal(self.listeValeur[5])
 
 
         #------------------------------------Caclul C---------------------------------#

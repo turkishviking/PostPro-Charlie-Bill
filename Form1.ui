@@ -15,7 +15,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>image/shinke3n.png</normaloff>image/shinke3n.png</iconset>
+    <normaloff>image/shinke2n.png</normaloff>image/shinke2n.png</iconset>
   </property>
   <property name="dockNestingEnabled">
    <bool>false</bool>
