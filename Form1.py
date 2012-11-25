@@ -30,26 +30,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.PlandeTravail = "G17"
         self.coordonnees = "G54"
         self.connect(self.verticalSlider, QtCore.SIGNAL("resize()"), self.resizedW)
+        self.BoutonPrevusalisation.setEnabled(False)
 
-        
-    def resizedW(self):
-        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
-        try:
-            self.TransformTextEdit.clear()
-            for g in range(self.verticalSlider_2.value(), self.verticalSlider_2.value()+ self.NbrLigneAffiche):
-                self.listeCalcul [g] = str(self.listeCalcul [g]).replace("\r\n", "")
-                self.TransformTextEdit.append(self.listeCalcul [g])
-        except AttributeError:
-            pass
-            
-        try:
-            self.InputTextEdit.clear()
-            for g in range(self.verticalSlider.value(), self.verticalSlider.value()+ self.NbrLigneAffiche):
-                self.liste[g] = self.liste[g].replace("\r\n", "")
-                self.InputTextEdit.append(self.liste[g])
-        except AttributeError:
-            pass
-        print(self.NbrLigneAffiche)
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
         """
@@ -63,11 +45,13 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        Dialog = QtGui.QDialog()
-        di = OGL.MonDialog()
-        di.setupUi(Dialog, self.liste3D, self.listeCoo,  self)
-        reply = Dialog.exec_()
-
+        try:
+            Dialog = QtGui.QWidget()
+            di = OGL.MonDialog()
+            di.setupUi(Dialog, self.liste3D, self.listeCoo,  self)
+            reply = Dialog.show()
+        except AttributeError:
+            pass
     
     """-----------------------------------------------------------------------------------------\\\\\\\\\\----------Calcul-----------////////----------------------------------------------------------------------------"""
     @pyqtSignature("")
@@ -201,6 +185,27 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.coordonnees = "G59.3"
         self.Header()
         
+        
+    """----------------------------------------------------------------------------------------------------Mise a jour quand Resize----------------------------------------------------------------------------------------------"""
+    def resizedW(self):
+        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
+        try:
+            self.TransformTextEdit.clear()
+            for g in range(self.verticalSlider_2.value(), self.verticalSlider_2.value()+ self.NbrLigneAffiche):
+                self.listeCalcul [g] = str(self.listeCalcul [g]).replace("\r\n", "")
+                self.TransformTextEdit.append(self.listeCalcul [g])
+        except AttributeError:
+            pass
+            
+        try:
+            self.InputTextEdit.clear()
+            for g in range(self.verticalSlider.value(), self.verticalSlider.value()+ self.NbrLigneAffiche):
+                self.liste[g] = self.liste[g].replace("\r\n", "")
+                self.InputTextEdit.append(self.liste[g])
+        except AttributeError:
+            pass
+        print(self.NbrLigneAffiche)
+        
     """--------------------------------------------------------------------------------------------------Gestion des slider------------------------------------------------------------------------------------------"""
     @pyqtSignature("int")
     def on_verticalSlider_valueChanged(self, value):
@@ -271,6 +276,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+        self.BoutonPrevusalisation.setEnabled(True)
         try:
             #--------------------------------Selection du Fichier, ouverture en lecture-----------------------------#
             filename=QFileDialog.getOpenFileName(self, "Explorateur de Fichier – Ouvrir un Fichier", "", "AptSource (*.aptsource)")
@@ -324,14 +330,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #--------------------------------------------------Referme le fichier-----------------------------------------------#
             fichier.close()
             self.progressBar.setValue(0)
-        except IOError:
-            pass
+        except (IOError, UnboundLocalError):
+            self.BoutonPrevusalisation.setEnabled(False)
        
        
     """--------------------------------------------------------------------------------------------------Ouvrir Un Fichier------------------------------------------------------------------------------------------"""
 
     @pyqtSignature("")
     def on_actionOuvrir_activated(self):
+        self.BoutonPrevusalisation.setEnabled(False)
         try:
             #--------------------------------Selection du Fichier, ouverture en lecture-----------------------------#
             filename=QFileDialog.getOpenFileName(self, "Explorateur de Fichier – Ouvrir un Fichier", "", "AptSource (*.aptsource)")

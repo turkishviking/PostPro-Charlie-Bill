@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/charlie/python/PostPro/Form1.ui'
 #
-# Created: Sun Nov 25 00:14:03 2012
+# Created: Sun Nov 25 01:21:01 2012
 #      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
@@ -436,6 +436,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.tabWidget.setCurrentIndex(0)
+        QtCore.QObject.connect(self.tabWidget, QtCore.SIGNAL(_fromUtf8("currentChanged(QWidget*)")), self.verticalSlider.repaint)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
