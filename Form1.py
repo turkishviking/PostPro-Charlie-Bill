@@ -40,6 +40,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         # TODO: not implemented yet
         raise NotImplementedError
         
+        
+    """ --------------------------------------------------------------------------------------------------------Initialise une fenetre OGL---------------------------------------------------------------------------"""
     @pyqtSignature("")
     def on_BoutonPrevusalisation_clicked(self):
         """
@@ -60,7 +62,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Slot documentation goes here.
         """
 
-        self.liste3D = []
+        
         self.Stock_C = 0
         self.listeCalcul = []
         self.progressBar.setValue(0)
@@ -93,11 +95,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.listeCalcul .append(self.Extraction(ligne,  Bol_Calcul))
                 Bol_Calcul = True
 
-        #---------------------------------Affiche les 28 premier élement de la liste-----------------------------#
+        #-------------------------------------------Affiche les  élement de la liste-------------------------------------#
         self.verticalSlider_2.setMaximum(len(self.listeCalcul ))
         self.AfficheTransform()
-        print(len(self.liste))
-        print(len(self.listeCalcul))
+
     """--------------------------------------------------------------------------------------Header, Ender------------------------------------------------------------------------------------------------------"""
 
     #-------------------------------------------------------Header-----------------------------------------------------#
@@ -182,7 +183,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.coordonnees = "G59.3"
         self.Header()
         
-    """----------------------------------------------------------------------------------------Affichage des TextBOx----------------------------------------------------------------------------------------------------------"""
+    """----------------------------------------------------------------------------------------Affichage des TextBox----------------------------------------------------------------------------------------------------------"""
     def AfficheInput(self):
         try:
             self.InputTextEdit.clear()
