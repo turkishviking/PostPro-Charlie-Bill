@@ -285,8 +285,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             #----------------------------------Extrait les coordonnées pour openGL--------------------------------#
             self.liste3D=[]
             self.listeCoo=[]
-            
-            for ligne in self.liste:
+            listeT = self.liste
+            for ligne in listeT:
                 self.progressBar.setValue(self.progressBar.value()+1)
                 if "GOTO" in ligne:
                     ligne = ligne.replace("GOTO", "")

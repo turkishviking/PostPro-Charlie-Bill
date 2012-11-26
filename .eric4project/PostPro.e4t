@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project PostPro -->
-<!-- Saved: 2012-11-26, 17:45:46 -->
+<!-- Saved: 2012-11-27, 00:24:42 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
     <Summary>TODO: not implemented yet</Summary>
     <Description></Description>
-    <Created>2012-11-26, 17:26:35</Created>
+    <Created>2012-11-27, 00:24:02</Created>
     <Resource>
       <Filename>Form1.py</Filename>
       <Linenumber>40</Linenumber>
