@@ -7,6 +7,7 @@ Module implementing MainWindow.
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtCore import pyqtSignature
 from PyQt4.QtGui import QFileDialog
+import Ui_APropo
 from Ui_Form1 import Ui_MainWindow
 import math
 from decimal import Decimal
@@ -37,9 +38,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        # TODO: not implemented yet
-        raise NotImplementedError
-        
+        self.TransformTextEdit.clear()
+
         
     """ --------------------------------------------------------------------------------------------------------Initialise une fenetre OGL---------------------------------------------------------------------------"""
     @pyqtSignature("")
@@ -251,18 +251,25 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
     """--------------------------------------------------------------------------------------------------Gestion des Menus------------------------------------------------------------------------------------------"""
         
-    @pyqtSignature("int")
-    def on_menuA_propos_activated(self, itemId):
-        """
-        Slot documentation goes here.
-        """
-
     
-    @pyqtSignature("int")
-    def on_menuAide_activated(self, itemId):
+    @pyqtSignature("")
+    def on_actionA_Propos_activated(self):
         """
         Slot documentation goes here.
         """
+        # TODO: not implemented yet
+        self.Dialog = QtGui.QWidget()
+        self.ui = Ui_APropo.Ui_Dialog()
+        self.ui.setupUi(self.Dialog)
+        self.Dialog.show()
+    
+    @pyqtSignature("")
+    def on_actionLecteur_Audio_activated(self):
+        """
+        Slot documentation goes here.
+        """
+        # TODO: not implemented yet
+        
 
     
     
@@ -436,4 +443,3 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             return formule
         else:
             return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
-
