@@ -11,7 +11,7 @@ import Ui_APropo
 from Ui_Form1 import Ui_MainWindow
 import math
 from decimal import Decimal
-
+import Ui_test
 import os
 from PyQt4 import QtCore, QtGui
 import OGL
@@ -20,6 +20,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     """
     Class documentation goes here.
     """
+    @pyqtSignature("")
+    def on_pushButton_clicked(self):
+        self.Formtest = QtGui.QWidget()
+        self.uitest = Ui_test.Ui_Form()
+        self.uitest.setupUi(self.Formtest,  self.listetest)
+        self.Formtest.show()
+        
+
+
+
     def __init__(self, parent = None):
         """
         Constructor
@@ -32,6 +42,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.coordonnees = "G54"
         self.connect(self.verticalSlider, QtCore.SIGNAL("resize()"), self.resizedW)
         self.BoutonPrevusalisation.setEnabled(False)
+        
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
@@ -61,19 +72,19 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-
-        
+        self.Mode = 0
+        self.listetest=[]
         self.Stock_C = 0
         self.listeCalcul = []
         self.progressBar.setValue(0)
         self.progressBar.setMaximum(len(self.liste))
-        Bol_Calcul = False
+        
         #-------------------------------------Vitesse Rapide pour Simulation--------------------------------------#
         if self.checkBox.isChecked() == True:
             self.listeHeader.append("G1 " + "F10000000000")
         #---------------------------------\\\\\\------Traitement des données------///////------------------------------#
         #-----------------------------------------------------Prend l'outil----------------------------------------------------#
-        
+     
         listeT = self.liste
         for ligne in listeT:
             self.progressBar.setValue( self.progressBar.value()+1)
@@ -92,11 +103,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     
             #----------------------------------------------------Extraction-----------------------------------------------------#
             if "GOTO" in ligne:
-                self.listeCalcul .append(self.Extraction(ligne,  Bol_Calcul))
-                Bol_Calcul = True
+                self.listeCalcul .append(self.Extraction(ligne))
+               
 
         #-------------------------------------------Affiche les  élement de la liste-------------------------------------#
-        self.verticalSlider_2.setMaximum(len(self.listeCalcul ))
+        self.verticalSlider_2.setMaximum(len(self.listeCalcul))
         self.AfficheTransform()
 
     """--------------------------------------------------------------------------------------Header, Ender------------------------------------------------------------------------------------------------------"""
@@ -390,7 +401,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.close()
         
         """------------------------------------------------------------------------------------------------------Extraction-------------------------------------------------------------------------------------------------"""
-    def Extraction(self, ligne,  Bol_Calcul):
+    def Extraction(self, ligne):
         ligne = ligne.replace("GOTO", "")
         ligne = ligne.replace("/", "")
         self.listeValeur = ligne.split(",")
@@ -402,30 +413,36 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         K = Decimal(self.listeValeur[5])
 
 
+
+
         #------------------------------------Caclul C---------------------------------#
-        if Bol_Calcul == False:
-            if 0 < math.degrees(math.atan2(I, J)):
-                self.Stock_C = 0
-                formule = (math.fabs(math.degrees(math.atan2(I, J))))
-                C = formule
-            else:
-                self.Stock_C = 360 - 2*(math.fabs(math.degrees(math.atan2(I, J))))
-                formule = 360 - (math.fabs(math.degrees(math.atan2(I, J))))
-                C = self.Stock_C
+        try:
+            if 150 < math.degrees(math.atan2(self.I1, self.J1)):
+                if -150 > math.degrees(math.atan2(I, J)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
+                    self.Mode = 1
+                    self.Stock_C = self.Stock_C +360
+                   
                 
-        else:
+            if -150 > math.degrees(math.atan2(self.I1, self.J1)):
+                if 150 < math.degrees(math.atan2(I, J)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
+                    self.Mode = 1
+                    self.Stock_C = self.Stock_C -360    
+                       
+                        
+            if self.Mode == 0:
+                formule = ((math.degrees(math.atan2(I, J))))
+                C = formule
             
-            if math.fabs(math.degrees(math.atan2(I, J))) <= math.fabs(math.degrees(math.atan2(self.I1, self.J1))):
-                formule = 360 - math.fabs(math.degrees(math.atan2(I, J))) 
-            
-            if math.fabs(math.degrees(math.atan2(I, J))) > math.fabs(math.degrees(math.atan2(self.I1, self.J1))):
-                formule = math.fabs(math.degrees(math.atan2(I, J))) 
-        
-            if 300 < math.fabs(formule - self.formule1):
-                self.Stock_C = self.Stock_C + 360
-            
-            C = self.Stock_C + formule
-        
+            if self.Mode == 1:
+                formule = ((math.degrees(math.atan2(I, J))))
+                C = self.Stock_C + formule
+
+        except AttributeError:
+            formule = ((math.degrees(math.atan2(I, J))))
+            C =  formule
+                
+             
+
         C = str(round(C, 3))
         self.formule1 = formule
         self.I1 = I
@@ -439,7 +456,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Y = str(round(Y, 3))
         #------------------------------------Caclul Z---------------------------------#
         Z = str(round(Z, 3))
-        if Bol_Calcul == False:
-            return formule
-        else:
-            return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
+        
+        
+        #-------------------------------test--------------------------------
+        self.listetest.append(" -Atan2: " + str(round(math.degrees(math.atan2(I, J)), 3)) + "  -ABS: " + str(round(math.fabs(math.degrees(math.atan2(I, J))), 3)) + "  Formule: " + C  +"  " + str(self.Mode)  )
+
+        return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)

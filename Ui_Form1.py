@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/charlie/python/PostPro/Form1.ui'
+# Form implementation generated from reading ui file '/home/in-triz/PostPro-Charlie-Bill/Form1.ui'
 #
-# Created: Tue Nov 27 02:27:14 2012
-#      by: PyQt4 UI code generator 4.9.1
+# Created: Wed Nov 28 18:57:20 2012
+#      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1045, 546)
+        MainWindow.resize(1045, 548)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("image/shinke2n.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -109,6 +109,8 @@ class Ui_MainWindow(object):
         self.kpixmapregionselectorwidget.setAutoFillBackground(False)
         self.kpixmapregionselectorwidget.setPixmap(QtGui.QPixmap(_fromUtf8("image/shinke2n.png")))
         self.kpixmapregionselectorwidget.setObjectName(_fromUtf8("kpixmapregionselectorwidget"))
+        self.pushButton = QtGui.QPushButton(self.splitter)
+        self.pushButton.setObjectName(_fromUtf8("pushButton"))
         self.horizontalLayout_2.addWidget(self.splitter)
         self.verticalSlider_2 = QtGui.QSlider(self.tab)
         self.verticalSlider_2.setOrientation(QtCore.Qt.Vertical)
@@ -400,7 +402,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1045, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1045, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFichier = QtGui.QMenu(self.menubar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -447,6 +449,7 @@ class Ui_MainWindow(object):
         self.BouttonCalcul.setText(QtGui.QApplication.translate("MainWindow", "Calculer", None, QtGui.QApplication.UnicodeUTF8))
         self.BouttonEffacer.setText(QtGui.QApplication.translate("MainWindow", "Effacer", None, QtGui.QApplication.UnicodeUTF8))
         self.BoutonPrevusalisation.setText(QtGui.QApplication.translate("MainWindow", "Prévisualiser", None, QtGui.QApplication.UnicodeUTF8))
+        self.pushButton.setText(QtGui.QApplication.translate("MainWindow", "PushButton", None, QtGui.QApplication.UnicodeUTF8))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QtGui.QApplication.translate("MainWindow", "Calculer", None, QtGui.QApplication.UnicodeUTF8))
         self.groupBox.setTitle(QtGui.QApplication.translate("MainWindow", "Paramètres Machine", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxUnite.setItemText(0, QtGui.QApplication.translate("MainWindow", "mm", None, QtGui.QApplication.UnicodeUTF8))
