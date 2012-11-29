@@ -276,7 +276,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        # TODO: not implemented yet
+        #--------------------------------------Ouvre la fenetre Ui a Propos--------------------------------#
         self.Dialog = QtGui.QWidget()
         self.ui = Ui_APropo.Ui_Dialog()
         self.ui.setupUi(self.Dialog)
