@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PostPro -->
-<!-- Saved: 2012-11-25, 17:24:14 -->
+<!-- Saved: 2012-11-29, 03:07:29 -->
 <!-- Copyright (C) 2012 Lutaud Charlie,  -->
 <Project version="4.6">
   <Language>en</Language>
@@ -16,10 +16,13 @@
     <Source>PostPro.py</Source>
     <Source>Form1.py</Source>
     <Source>OGL.py</Source>
-    <Source>qslid.py</Source>
+    <Source>Ui_test.py</Source>
+    <Source>scrolltext.py</Source>
+    <Source>Ui_APropo.py</Source>
   </Sources>
   <Forms>
     <Form>Form1.ui</Form>
+    <Form>test.ui</Form>
   </Forms>
   <Translations>
   </Translations>
