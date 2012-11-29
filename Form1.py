@@ -29,7 +29,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
 
 
-
     def __init__(self, parent = None):
         """
         Constructor
@@ -41,8 +40,15 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.PlandeTravail = "G17"
         self.coordonnees = "G54"
         self.connect(self.verticalSlider, QtCore.SIGNAL("resize()"), self.resizedW)
+        self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
+        self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
         
+
+    def scrollInput(self,  intArg):
+            self.verticalSlider.setValue(self.verticalSlider.value() -  intArg)
+    def scrollTransform(self,  intArg):
+            self.verticalSlider_2.setValue(self.verticalSlider_2.value() -  intArg)
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
@@ -230,19 +236,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        self.AfficheInput()
-        self.spinBox.setMaximum(len(self.liste))
-        self.spinBox.setValue(self.verticalSlider.value())
-
+        try:
+            self.AfficheInput()
+            self.spinBox.setMaximum(len(self.liste))
+            self.spinBox.setValue(self.verticalSlider.value())
+        except AttributeError:
+          pass
             
     @pyqtSignature("int")
     def on_verticalSlider_2_valueChanged(self, value):
         """
         Slot documentation goes here.
         """
-        self.AfficheTransform()
-        self.spinBox_2.setMaximum(len(self.listeCalcul ))
-        self.spinBox_2.setValue(self.verticalSlider_2.value())
+        try:
+            self.AfficheTransform()
+            self.spinBox_2.setMaximum(len(self.listeCalcul ))
+            self.spinBox_2.setValue(self.verticalSlider_2.value())
+        except AttributeError:
+          pass
 
     """---------------------------------------------------------------------------------------------------Gestion des spinBox-------------------------------------------------------------------------------------------"""
     @pyqtSignature("int")

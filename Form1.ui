@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1045</width>
+    <width>1186</width>
     <height>548</height>
    </rect>
   </property>
@@ -55,7 +55,7 @@
           <item>
            <layout class="QHBoxLayout" name="horizontalLayout_2">
             <item>
-             <widget class="QTextEdit" name="InputTextEdit">
+             <widget class="scrolltext" name="InputTextEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -179,7 +179,7 @@
              </widget>
             </item>
             <item>
-             <widget class="QTextEdit" name="TransformTextEdit">
+             <widget class="scrolltext" name="TransformTextEdit">
               <property name="sizePolicy">
                <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
                 <horstretch>0</horstretch>
@@ -782,7 +782,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1045</width>
+     <width>1186</width>
      <height>25</height>
     </rect>
    </property>
@@ -857,6 +857,11 @@
    <class>Qslid</class>
    <extends>QSlider</extends>
    <header>qslid.h</header>
+  </customwidget>
+  <customwidget>
+   <class>scrolltext</class>
+   <extends>QTextEdit</extends>
+   <header>scrolltext.h</header>
   </customwidget>
  </customwidgets>
  <resources/>

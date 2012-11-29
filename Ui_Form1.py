@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/in-triz/PostPro-Charlie-Bill/Form1.ui'
 #
-# Created: Wed Nov 28 18:57:20 2012
+# Created: Thu Nov 29 01:50:46 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -17,7 +17,7 @@ except AttributeError:
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName(_fromUtf8("MainWindow"))
-        MainWindow.resize(1045, 548)
+        MainWindow.resize(1186, 548)
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("image/shinke2n.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
@@ -45,7 +45,7 @@ class Ui_MainWindow(object):
         self.verticalLayout_2.setObjectName(_fromUtf8("verticalLayout_2"))
         self.horizontalLayout_2 = QtGui.QHBoxLayout()
         self.horizontalLayout_2.setObjectName(_fromUtf8("horizontalLayout_2"))
-        self.InputTextEdit = QtGui.QTextEdit(self.tab)
+        self.InputTextEdit = scrolltext(self.tab)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -117,7 +117,7 @@ class Ui_MainWindow(object):
         self.verticalSlider_2.setInvertedAppearance(True)
         self.verticalSlider_2.setObjectName(_fromUtf8("verticalSlider_2"))
         self.horizontalLayout_2.addWidget(self.verticalSlider_2)
-        self.TransformTextEdit = QtGui.QTextEdit(self.tab)
+        self.TransformTextEdit = scrolltext(self.tab)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.MinimumExpanding, QtGui.QSizePolicy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -402,7 +402,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1045, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 25))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFichier = QtGui.QMenu(self.menubar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -487,6 +487,7 @@ class Ui_MainWindow(object):
         self.actionLecteur_Audio.setText(QtGui.QApplication.translate("MainWindow", "Lecteur Audio", None, QtGui.QApplication.UnicodeUTF8))
 
 from PyKDE4.kdeui import KPixmapRegionSelectorWidget
+from scrolltext import scrolltext
 from qslid import Qslid
 
 if __name__ == "__main__":
