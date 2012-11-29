@@ -70,6 +70,9 @@
                 <bold>false</bold>
                </font>
               </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
+              </property>
               <property name="acceptRichText">
                <bool>true</bool>
               </property>
@@ -193,6 +196,9 @@
                 <italic>false</italic>
                 <bold>false</bold>
                </font>
+              </property>
+              <property name="verticalScrollBarPolicy">
+               <enum>Qt::ScrollBarAlwaysOff</enum>
               </property>
              </widget>
             </item>

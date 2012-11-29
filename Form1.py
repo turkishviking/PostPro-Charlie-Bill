@@ -71,16 +71,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
+        self.TransformTextEdit.clear
         self.Mode = 0
         self.listetest=[]
         self.Stock_C = 0
         self.listeCalcul = []
         self.progressBar.setValue(0)
         self.progressBar.setMaximum(len(self.liste))
+        #------------------------------------------------------Ajoute le Header----------------------------------------------#
+        d = self.HeadertextEdit.toPlainText()
+        listeheader = d.split("\n")
+        for a in listeheader:
+            self.listeCalcul.append(a)
         
-        #-------------------------------------Vitesse Rapide pour Simulation--------------------------------------#
-        if self.checkBox.isChecked() == True:
-            self.listeHeader.append("G1 " + "F10000000000")
+
         #---------------------------------\\\\\\------Traitement des données------///////------------------------------#
         #-----------------------------------------------------Prend l'outil----------------------------------------------------#
      
@@ -94,17 +98,23 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.listeCalcul .append("M3")
                 self.listeCalcul .append("M0")
                 
-            if self.checkBox.isChecked() == False:
-                if "FEDRAT/ " in ligne:
+            if "FEDRAT/ " in ligne:   
+                if self.checkBox.isChecked() == False:
                     ligne=ligne.replace("FEDRAT/ ", "")
                     ligne=ligne.replace(",MMPM", "")
                     self.listeCalcul .append("G1 F" + (ligne))
+                else:
+                    #-------------------------------------Vitesse Rapide pour Simulation--------------------------------------#
+                    self.listeCalcul.append("G1 " + "F100000")
                     
             #----------------------------------------------------Extraction-----------------------------------------------------#
             if "GOTO" in ligne:
                 self.listeCalcul .append(self.Extraction(ligne))
-               
-
+            #-------------------------------------------------Ajout de Ender---------------------------------------------------#
+        d = self.EnderTextEdit.toPlainText()
+        listeEnder = d.split("\n")
+        for a in listeEnder:
+            self.listeCalcul.append(a)
         #-------------------------------------------Affiche les  élement de la liste-------------------------------------#
         self.verticalSlider_2.setMaximum(len(self.listeCalcul))
         self.AfficheTransform()
@@ -247,7 +257,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         try:
             self.AfficheTransform()
-            self.spinBox_2.setMaximum(len(self.listeCalcul ))
+            self.spinBox_2.setMaximum(len(self.liste))
             self.spinBox_2.setValue(self.verticalSlider_2.value())
         except AttributeError:
           pass
@@ -391,7 +401,11 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         try:
             #--------------------------------Selection du Fichier, ouverture en Ecriture-----------------------------#
             filename=QFileDialog.getSaveFileName(self, "Explorateur de Fichier – Enregistrer un Fichier", "", "Ngc (*.ngc)")
-            fichier = open(filename, "w")
+            if ".ngc" in filename:
+                ext = ""
+            else:
+                ext = ".ngc"
+            fichier = open(filename + ext, "w")
             #-----------------------------Ajoute ligne à ligne chaque element de la liste----------------------------#
             for g in range(len(self.listeCalcul )):
                 fichier.write(str(self.listeCalcul [g]) + "\n")
@@ -422,24 +436,24 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
         #------------------------------------Caclul C---------------------------------#
         try:
-            if 150 < math.degrees(math.atan2(self.I1, self.J1)):
-                if -150 > math.degrees(math.atan2(I, J)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
+            if 150 < math.degrees(math.atan2(self.J1, self.I1)):
+                if -150 > math.degrees(math.atan2(J, I)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
                     self.Stock_C = self.Stock_C +360
 
-            if -150 > math.degrees(math.atan2(self.I1, self.J1)):
-                if 150 < math.degrees(math.atan2(I, J)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
+            if -150 > math.degrees(math.atan2(self.J1, self.I1)):
+                if 150 < math.degrees(math.atan2(J, I)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
                     self.Stock_C = self.Stock_C -360    
 
-            C = self.Stock_C + math.degrees(math.atan2(I, J))
+            C = (self.Stock_C + math.degrees(math.atan2(J, I)))
         except AttributeError:
-            C = math.degrees(math.atan2(I, J))
+            C = math.degrees(math.atan2(J, I))
                 
 
         C = str(round(C, 3))
         self.I1 = I
         self.J1 = J
         #------------------------------------Caclul A---------------------------------#
-        A = math.degrees(math.atan2(-math.sqrt(I*I+J*J),  K))
+        A = - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
         A = str(round(A, 3))
         #------------------------------------Caclul X---------------------------------#
         X = str(round(X, 3))

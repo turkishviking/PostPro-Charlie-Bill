@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/in-triz/PostPro-Charlie-Bill/Form1.ui'
 #
-# Created: Thu Nov 29 02:38:16 2012
+# Created: Thu Nov 29 16:58:14 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -57,6 +57,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.InputTextEdit.setFont(font)
+        self.InputTextEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.InputTextEdit.setAcceptRichText(True)
         self.InputTextEdit.setObjectName(_fromUtf8("InputTextEdit"))
         self.horizontalLayout_2.addWidget(self.InputTextEdit)
@@ -129,6 +130,7 @@ class Ui_MainWindow(object):
         font.setItalic(False)
         font.setWeight(50)
         self.TransformTextEdit.setFont(font)
+        self.TransformTextEdit.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.TransformTextEdit.setObjectName(_fromUtf8("TransformTextEdit"))
         self.horizontalLayout_2.addWidget(self.TransformTextEdit)
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
