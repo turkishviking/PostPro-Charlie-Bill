@@ -76,7 +76,7 @@
              </widget>
             </item>
             <item>
-             <widget class="Qslid" name="verticalSlider">
+             <widget class="QSlider" name="verticalSlider">
               <property name="orientation">
                <enum>Qt::Vertical</enum>
               </property>
@@ -852,11 +852,6 @@
    <class>KPixmapRegionSelectorWidget</class>
    <extends>QWidget</extends>
    <header>kpixmapregionselectorwidget.h</header>
-  </customwidget>
-  <customwidget>
-   <class>Qslid</class>
-   <extends>QSlider</extends>
-   <header>qslid.h</header>
   </customwidget>
   <customwidget>
    <class>scrolltext</class>

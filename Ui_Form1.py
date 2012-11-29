@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/in-triz/PostPro-Charlie-Bill/Form1.ui'
 #
-# Created: Thu Nov 29 01:50:46 2012
+# Created: Thu Nov 29 02:38:16 2012
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         self.InputTextEdit.setAcceptRichText(True)
         self.InputTextEdit.setObjectName(_fromUtf8("InputTextEdit"))
         self.horizontalLayout_2.addWidget(self.InputTextEdit)
-        self.verticalSlider = Qslid(self.tab)
+        self.verticalSlider = QtGui.QSlider(self.tab)
         self.verticalSlider.setOrientation(QtCore.Qt.Vertical)
         self.verticalSlider.setInvertedAppearance(True)
         self.verticalSlider.setObjectName(_fromUtf8("verticalSlider"))
@@ -488,7 +488,6 @@ class Ui_MainWindow(object):
 
 from PyKDE4.kdeui import KPixmapRegionSelectorWidget
 from scrolltext import scrolltext
-from qslid import Qslid
 
 if __name__ == "__main__":
     import sys

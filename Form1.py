@@ -39,11 +39,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.deplacement = "G90"
         self.PlandeTravail = "G17"
         self.coordonnees = "G54"
-        self.connect(self.verticalSlider, QtCore.SIGNAL("resize()"), self.resizedW)
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
         
+        
+    def resizeEvent(self, event):
+        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
+        self.AfficheInput()
+        self.AfficheTransform()
+             
 
     def scrollInput(self,  intArg):
             self.verticalSlider.setValue(self.verticalSlider.value() -  intArg)
@@ -221,15 +226,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         
     """----------------------------------------------------------------------------------------------------Mise a jour quand Resize----------------------------------------------------------------------------------------------"""
-    def resizedW(self):
-        self.update()
-        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
-        self.AfficheInput()
-        self.AfficheTransform()
-            
+
         
-       
-        
+
+      
     """--------------------------------------------------------------------------------------------------Gestion des slider------------------------------------------------------------------------------------------"""
     @pyqtSignature("int")
     def on_verticalSlider_valueChanged(self, value):
