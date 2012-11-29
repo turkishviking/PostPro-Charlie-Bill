@@ -42,18 +42,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
-        
-        
-    def resizeEvent(self, event):
-        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
-        self.AfficheInput()
-        self.AfficheTransform()
-             
-
-    def scrollInput(self,  intArg):
-            self.verticalSlider.setValue(self.verticalSlider.value() -  intArg)
-    def scrollTransform(self,  intArg):
-            self.verticalSlider_2.setValue(self.verticalSlider_2.value() -  intArg)
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
@@ -226,7 +214,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
         
     """----------------------------------------------------------------------------------------------------Mise a jour quand Resize----------------------------------------------------------------------------------------------"""
-
+    def resizeEvent(self, event):
+        self.NbrLigneAffiche = int(self.InputTextEdit.height()/13.5)
+        self.AfficheInput()
+        self.AfficheTransform()
+             
+    """---------------------------------------------------------------------------------------------------------Scroll des TextEdit------------------------------------------------------------------------------------------------------------"""
+    def scrollInput(self,  intArg):
+            self.verticalSlider.setValue(self.verticalSlider.value() -  intArg)
+    def scrollTransform(self,  intArg):
+            self.verticalSlider_2.setValue(self.verticalSlider_2.value() -  intArg)
         
 
       
@@ -423,39 +420,22 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         J = Decimal(self.listeValeur[4])
         K = Decimal(self.listeValeur[5])
 
-
-
-
         #------------------------------------Caclul C---------------------------------#
         try:
             if 150 < math.degrees(math.atan2(self.I1, self.J1)):
                 if -150 > math.degrees(math.atan2(I, J)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
-                    self.Mode = 1
                     self.Stock_C = self.Stock_C +360
-                   
-                
+
             if -150 > math.degrees(math.atan2(self.I1, self.J1)):
                 if 150 < math.degrees(math.atan2(I, J)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
-                    self.Mode = 1
                     self.Stock_C = self.Stock_C -360    
-                       
-                        
-            if self.Mode == 0:
-                formule = ((math.degrees(math.atan2(I, J))))
-                C = formule
-            
-            if self.Mode == 1:
-                formule = ((math.degrees(math.atan2(I, J))))
-                C = self.Stock_C + formule
 
+            C = self.Stock_C + math.degrees(math.atan2(I, J))
         except AttributeError:
-            formule = ((math.degrees(math.atan2(I, J))))
-            C =  formule
+            C = math.degrees(math.atan2(I, J))
                 
-             
 
         C = str(round(C, 3))
-        self.formule1 = formule
         self.I1 = I
         self.J1 = J
         #------------------------------------Caclul A---------------------------------#
