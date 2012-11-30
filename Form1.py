@@ -15,6 +15,7 @@ import Ui_test
 import os
 from PyQt4 import QtCore, QtGui
 import OGL
+import AudioPlayer
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     """
@@ -287,7 +288,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         """
         Slot documentation goes here.
         """
-        # TODO: not implemented yet
+        self.W = QtGui.QWidget()
+        self.aud = AudioPlayer.AudioPlayer()
+        self.aud.show()
         
 
     

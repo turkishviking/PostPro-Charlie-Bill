@@ -5,6 +5,7 @@ from Form1 import MainWindow
 import sys
 if __name__ == "__main__":
    app = QtGui.QApplication(sys.argv)
+   app.setApplicationName("PostPro--Charlybill")
    myapp = MainWindow()
    myapp.show()
    sys.exit(app.exec_())
