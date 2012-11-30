@@ -6,48 +6,110 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>400</width>
-    <height>300</height>
+    <width>362</width>
+    <height>229</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>125</x>
-     <y>30</y>
-     <width>231</width>
-     <height>86</height>
+     <x>10</x>
+     <y>35</y>
+     <width>341</width>
+     <height>186</height>
     </rect>
    </property>
-   <property name="focusPolicy">
-    <enum>Qt::ClickFocus</enum>
-   </property>
-   <property name="contextMenuPolicy">
-    <enum>Qt::ActionsContextMenu</enum>
-   </property>
-   <property name="text">
-    <string>&lt;qt&gt;Please visit &lt;a href = &quot;http://www.google.com&gt;Google&lt;/a&gt;&lt;/qt&gt;</string>
-   </property>
-   <property name="textFormat">
-    <enum>Qt::AutoText</enum>
-   </property>
-   <property name="wordWrap">
-    <bool>true</bool>
-   </property>
-   <property name="openExternalLinks">
-    <bool>true</bool>
-   </property>
-   <property name="textInteractionFlags">
-    <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
-   </property>
-   <property name="buddy">
-    <cstring></cstring>
-   </property>
+   <layout class="QVBoxLayout" name="verticalLayout_2">
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <widget class="QLabel" name="label_2">
+          <property name="text">
+           <string>LUTAUD Charlie                         </string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="Hypertext" name="label">
+          <property name="focusPolicy">
+           <enum>Qt::ClickFocus</enum>
+          </property>
+          <property name="contextMenuPolicy">
+           <enum>Qt::ActionsContextMenu</enum>
+          </property>
+          <property name="text">
+           <string>&lt;font color=&quot;blue&quot;&gt;http://www.in-triz.com/&lt;/font&gt;</string>
+          </property>
+          <property name="textFormat">
+           <enum>Qt::AutoText</enum>
+          </property>
+          <property name="wordWrap">
+           <bool>true</bool>
+          </property>
+          <property name="openExternalLinks">
+           <bool>true</bool>
+          </property>
+          <property name="textInteractionFlags">
+           <set>Qt::LinksAccessibleByMouse|Qt::TextSelectableByMouse</set>
+          </property>
+          <property name="buddy">
+           <cstring></cstring>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>CHEVRIER Martin                        UDS Technologie</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="label_4">
+        <property name="text">
+         <string>BONTEMPS Adrien </string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_5">
+      <property name="text">
+       <string>
+Ce logiciel n'est pas un logiciel professionnel, et son utilisation se fait sous l'entière responsabilité de l'utilisateur, qui en accepte les défauts éventuels. L'auteur du logiciel décline toute responsabilité en cas de dommage matériel ou corporel, ou de perte de données pouvant résulter d'un défaut du logiciel, ou d'une erreur de l'utilisateur lors de son installation ou de son utilisation.</string>
+      </property>
+      <property name="textFormat">
+       <enum>Qt::AutoText</enum>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+      <property name="buddy">
+       <cstring></cstring>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>Hypertext</class>
+   <extends>QLabel</extends>
+   <header>hypertext.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
