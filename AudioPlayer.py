@@ -63,4 +63,7 @@ class AudioPlayer(QtGui.QWidget):
         m = (time-3600*h) / 60
         s = (time-3600*h-m*60)
         self.status.setText('%02d:%02d:%02d'%(h,m,s))
+        
+    def closeEvent(self, e):
+        self.player.stop()
 
