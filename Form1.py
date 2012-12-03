@@ -43,6 +43,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
+        self.liste = []
+        self.listetest = []
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):

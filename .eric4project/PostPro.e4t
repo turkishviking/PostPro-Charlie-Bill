@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Tasks SYSTEM "Tasks-4.2.dtd">
 <!-- eric4 tasks file for project PostPro -->
+<<<<<<< HEAD
 <!-- Saved: 2012-11-30, 15:51:25 -->
 <Tasks version="4.2">
   <Task priority="1" completed="False" bugfix="False">
@@ -12,4 +13,8 @@
       <Linenumber>300</Linenumber>
     </Resource>
   </Task>
+=======
+<!-- Saved: 2012-11-30, 04:05:31 -->
+<Tasks version="4.2">
+>>>>>>> a5da6000d407dd4952e69aba0e7b5436b3eee008
 </Tasks>

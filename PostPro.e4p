@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PostPro -->
+<<<<<<< HEAD
 <!-- Saved: 2012-11-30, 15:51:25 -->
+=======
+<!-- Saved: 2012-11-30, 04:04:48 -->
+>>>>>>> a5da6000d407dd4952e69aba0e7b5436b3eee008
 <!-- Copyright (C) 2012 Lutaud Charlie,  -->
 <Project version="4.6">
   <Language>en</Language>
