@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Project SYSTEM "Project-4.6.dtd">
 <!-- eric4 project file for project PostPro -->
-<!-- Saved: 2012-11-30, 04:04:48 -->
+<!-- Saved: 2012-11-30, 17:16:06 -->
 <!-- Copyright (C) 2012 Lutaud Charlie,  -->
 <Project version="4.6">
   <Language>en</Language>
@@ -20,10 +20,12 @@
     <Source>scrolltext.py</Source>
     <Source>Ui_APropo.py</Source>
     <Source>AudioPlayer.py</Source>
+    <Source>hypertext.py</Source>
   </Sources>
   <Forms>
     <Form>Form1.ui</Form>
     <Form>test.ui</Form>
+    <Form>APropo.ui</Form>
   </Forms>
   <Translations>
   </Translations>
