@@ -43,8 +43,6 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
-        self.liste = []
-        self.listetest = []
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
@@ -435,31 +433,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         X = Decimal(self.listeValeur[0])
         Y = Decimal(self.listeValeur[1])
         Z = Decimal(self.listeValeur[2])
-        I = Decimal(self.listeValeur[3])
-        J = Decimal(self.listeValeur[4])
-        K = Decimal(self.listeValeur[5])
-
-        #------------------------------------Caclul C---------------------------------#
-        try:
-            if 150 < math.degrees(math.atan2(self.J1, self.I1)):
-                if -150 > math.degrees(math.atan2(J, I)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
-                    self.Stock_C = self.Stock_C +360
-
-            if -150 > math.degrees(math.atan2(self.J1, self.I1)):
-                if 150 < math.degrees(math.atan2(J, I)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
-                    self.Stock_C = self.Stock_C -360    
-
-            C = (self.Stock_C + math.degrees(math.atan2(J, I)))
-        except AttributeError:
-            C = math.degrees(math.atan2(J, I))
-                
-
-        C = str(round(C, 3))
-        self.I1 = I
-        self.J1 = J
-        #------------------------------------Caclul A---------------------------------#
-        A = - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
-        A = str(round(A, 3))
+        
+                    
         #------------------------------------Caclul X---------------------------------#
         X = str(round(X, 3))
         #------------------------------------Caclul Y---------------------------------#
@@ -468,7 +443,39 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         Z = str(round(Z, 3))
         
         
+        try:
+            I = Decimal(self.listeValeur[3])
+            J = Decimal(self.listeValeur[4])
+            K = Decimal(self.listeValeur[5])
+
+            #------------------------------------Caclul C---------------------------------#
+            try:
+                if 150 < math.degrees(math.atan2(self.J1, self.I1)):
+                    if -150 > math.degrees(math.atan2(J, I)): #----==> tourne à droite, Incrémente stock C par ajouts, Passe en mode 1
+                        self.Stock_C = self.Stock_C +360
+
+                if -150 > math.degrees(math.atan2(self.J1, self.I1)):
+                    if 150 < math.degrees(math.atan2(J, I)): #----==> tourne à gauche, Décrémente stock C par soustraction, Passe en mode 1
+                        self.Stock_C = self.Stock_C -360    
+
+                C = (self.Stock_C + math.degrees(math.atan2(J, I)))
+            except AttributeError:
+                C = math.degrees(math.atan2(J, I))
+                    
+
+            C = str(round(C, 3))
+            self.I1 = I
+            self.J1 = J
+            #------------------------------------Caclul A---------------------------------#
+            A = - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+            A = str(round(A, 3))
+            return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
+
+        except IndexError:
+            return ("X " + X + " Y " + Y + " Z " + Z)
+
+        
+        
         #-------------------------------test--------------------------------
         self.listetest.append(" -Atan2: " + str(round(math.degrees(math.atan2(I, J)), 3)) + "  -ABS: " + str(round(math.fabs(math.degrees(math.atan2(I, J))), 3)) + "  Formule: " + C  +"  " + str(self.Mode)  )
 
-        return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
