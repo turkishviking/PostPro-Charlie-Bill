@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file '/home/in-triz/PostPro-Charlie-Bill/Form1.ui'
+# Form implementation generated from reading ui file '/home/charlie/python/PostPro/Form1.ui'
 #
-# Created: Thu Nov 29 16:58:14 2012
-#      by: PyQt4 UI code generator 4.9.3
+# Created: Sun Jan 27 20:33:19 2013
+#      by: PyQt4 UI code generator 4.9.1
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -21,6 +21,7 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(_fromUtf8("image/shinke2n.png")), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet(_fromUtf8(""))
         MainWindow.setDocumentMode(False)
         MainWindow.setDockNestingEnabled(False)
         MainWindow.setUnifiedTitleAndToolBarOnMac(True)
@@ -35,6 +36,7 @@ class Ui_MainWindow(object):
         sizePolicy.setHeightForWidth(self.tabWidget.sizePolicy().hasHeightForWidth())
         self.tabWidget.setSizePolicy(sizePolicy)
         self.tabWidget.setAutoFillBackground(False)
+        self.tabWidget.setStyleSheet(_fromUtf8(""))
         self.tabWidget.setElideMode(QtCore.Qt.ElideNone)
         self.tabWidget.setObjectName(_fromUtf8("tabWidget"))
         self.tab = QtGui.QWidget()
@@ -235,6 +237,16 @@ class Ui_MainWindow(object):
         brush.setStyle(QtCore.Qt.SolidPattern)
         palette.setBrush(QtGui.QPalette.Disabled, QtGui.QPalette.Highlight, brush)
         self.progressBar.setPalette(palette)
+        self.progressBar.setStyleSheet(_fromUtf8(" QProgressBar {\n"
+"     border: 2px solid grey;\n"
+"     border-radius: 5px;\n"
+"     text-align: center;\n"
+" }\n"
+" QProgressBar::chunk {\n"
+"     background-color: qradialgradient(spread:pad, cx:0.5, cy:0.5, radius:0.5, fx:0.5, fy:0.5, stop:0 rgba(0, 0, 0, 255), stop:0.19397 rgba(0, 0, 0, 255), stop:0.202312 rgba(122, 97, 0, 255), stop:0.495514 rgba(76, 58, 0, 255), stop:0.504819 rgba(255, 126, 21, 234), stop:0.79 rgba(255, 255, 255, 255), stop:1 rgba(255, 158, 158, 255));\n"
+"     width: 10px;\n"
+"     margin: 0.5px;\n"
+" }"))
         self.progressBar.setMaximum(28)
         self.progressBar.setProperty("value", 0)
         self.progressBar.setObjectName(_fromUtf8("progressBar"))
@@ -404,7 +416,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 25))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 23))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFichier = QtGui.QMenu(self.menubar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))

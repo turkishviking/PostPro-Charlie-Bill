@@ -474,7 +474,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         except IndexError:
             return ("X " + X + " Y " + Y + " Z " + Z)
 
-        
+
         
         #-------------------------------test--------------------------------
         self.listetest.append(" -Atan2: " + str(round(math.degrees(math.atan2(I, J)), 3)) + "  -ABS: " + str(round(math.fabs(math.degrees(math.atan2(I, J))), 3)) + "  Formule: " + C  +"  " + str(self.Mode)  )
