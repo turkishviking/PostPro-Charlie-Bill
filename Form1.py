@@ -93,20 +93,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         for ligne in listeT:
             self.progressBar.setValue( self.progressBar.value()+1)
             if "LOADTL/" in ligne:
-                self.listeCalcul .append("M5")
+
                 self.listeCalcul .append("T" + ligne.replace("LOADTL/", "") + " G43")
                 self.listeCalcul .append("M6")
-                self.listeCalcul .append("M3")
-                self.listeCalcul .append("M0")
+
                 
             if "FEDRAT/ " in ligne:   
                 if self.checkBox.isChecked() == False:
                     ligne=ligne.replace("FEDRAT/ ", "")
                     ligne=ligne.replace(",MMPM", "")
                     self.listeCalcul .append("G1 F" + (ligne))
-                else:
-                    #-------------------------------------Vitesse Rapide pour Simulation--------------------------------------#
-                    self.listeCalcul.append("G1 " + "F100000")
+
                     
             #----------------------------------------------------Extraction-----------------------------------------------------#
             if "GOTO" in ligne:
@@ -130,6 +127,10 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.HeadertextEdit.append(self.deplacement)
         self.HeadertextEdit.append(self.PlandeTravail)
         self.HeadertextEdit.append(self.coordonnees)
+        #-------------------------------------Vitesse Rapide pour Simulation--------------------------------------#
+        if self.checkBox.isChecked() == True:
+            self.HeadertextEdit.append("G0")
+            
 
     #-------------------------------------------------------Ender-----------------------------------------------------#
     def Ender(self):
@@ -467,7 +468,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.I1 = I
             self.J1 = J
             #------------------------------------Caclul A---------------------------------#
-            A = - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+            A = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
             A = str(round(A, 3))
             return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
 

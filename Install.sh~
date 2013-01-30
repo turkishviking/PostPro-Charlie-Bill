@@ -1,0 +1,3 @@
+gksudo apt-get install python-kde4
+gksudo apt-get install python-qt4-phonon
+gksudo apt-get install python-qt4 
