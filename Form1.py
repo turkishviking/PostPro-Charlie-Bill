@@ -96,6 +96,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
 
                 self.listeCalcul .append("T" + ligne.replace("LOADTL/", "") + " G43")
                 self.listeCalcul .append("M6")
+                self.listeCalcul .append("G1 F1000")
 
                 
             if "FEDRAT/ " in ligne:   
