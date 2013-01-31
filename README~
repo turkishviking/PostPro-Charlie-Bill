@@ -1,6 +1,6 @@
 Installation:
 
-  --> Dépendances: Ouvrez un terminal dans le repertoire téléchargé et tapez: "sh Install.sh"
+  --> Dépendances: Ouvrez un terminal dans le repertoire téléchargé et tapez en root: "sh Install.sh"
   
   --> Pour lancer le PosrPro, double-cliquez sur: "postpro.sh" (verifiez qu'il est bien exécutable: propriétés --> droits d'accès --> cochez est executable.
 
