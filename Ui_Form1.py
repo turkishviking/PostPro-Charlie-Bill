@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/charlie/python/PostPro/Form1.ui'
 #
-# Created: Thu Feb 14 19:38:59 2013
+# Created: Wed Feb 27 14:33:45 2013
 #      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -27,8 +27,9 @@ class Ui_MainWindow(object):
         MainWindow.setUnifiedTitleAndToolBarOnMac(True)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
+        self.verticalLayout_7 = QtGui.QVBoxLayout(self.centralwidget)
+        self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
         self.tabWidget = QtGui.QTabWidget(self.centralwidget)
-        self.tabWidget.setGeometry(QtCore.QRect(4, 4, 1050, 473))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -140,7 +141,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_3 = QtGui.QHBoxLayout()
         self.horizontalLayout_3.setObjectName(_fromUtf8("horizontalLayout_3"))
         self.spinBox = QtGui.QSpinBox(self.tab)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(200)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.spinBox.sizePolicy().hasHeightForWidth())
@@ -188,7 +189,7 @@ class Ui_MainWindow(object):
         self.spinBox.setObjectName(_fromUtf8("spinBox"))
         self.horizontalLayout_3.addWidget(self.spinBox)
         self.spinBox_2 = QtGui.QSpinBox(self.tab)
-        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Maximum, QtGui.QSizePolicy.Fixed)
+        sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(200)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.spinBox_2.sizePolicy().hasHeightForWidth())
@@ -342,12 +343,6 @@ class Ui_MainWindow(object):
         self.verticalLayout_6.addLayout(self.verticalLayout_5)
         self.horizontalLayout = QtGui.QHBoxLayout()
         self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
-        self.label_7 = QtGui.QLabel(self.groupBox)
-        self.label_7.setObjectName(_fromUtf8("label_7"))
-        self.horizontalLayout.addWidget(self.label_7)
-        self.lineEdit = QtGui.QLineEdit(self.groupBox)
-        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
-        self.horizontalLayout.addWidget(self.lineEdit)
         self.verticalLayout_6.addLayout(self.horizontalLayout)
         self.checkBox = QtGui.QCheckBox(self.groupBox)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
@@ -415,6 +410,7 @@ class Ui_MainWindow(object):
         self.kpixmapregionselectorwidget_2.setObjectName(_fromUtf8("kpixmapregionselectorwidget_2"))
         self.horizontalLayout_11.addWidget(self.kpixmapregionselectorwidget_2)
         self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
+        self.verticalLayout_7.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 21))
@@ -456,7 +452,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -487,7 +483,6 @@ class Ui_MainWindow(object):
         self.comboBoxCoordonees.setItemText(7, QtGui.QApplication.translate("MainWindow", "Origine piece 8", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxCoordonees.setItemText(8, QtGui.QApplication.translate("MainWindow", "Origine piece 9", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "Choix du système de coordonnées", None, QtGui.QApplication.UnicodeUTF8))
-        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "Passe Mini en Z", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox.setText(QtGui.QApplication.translate("MainWindow", "Vitesse rapide pour la simulation", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Header", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("MainWindow", "Ender", None, QtGui.QApplication.UnicodeUTF8))

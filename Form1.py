@@ -101,9 +101,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 self.listeCalcul .append("G1 F1000")
 
                 
-            if "FEDRAT/ " in ligne:   
+            if "FEDRAT/" in ligne:   
                 if self.checkBox.isChecked() == False:
-                    ligne=ligne.replace("FEDRAT/ ", "")
+                    ligne=ligne.replace("FEDRAT/", "").replace(" ", "")
                     ligne=ligne.replace(",MMPM", "")
                     self.listeCalcul .append("G1 F" + (ligne))
                     self.vitesse = float(ligne)
@@ -111,8 +111,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                     
             #----------------------------------------------------Extraction-----------------------------------------------------#
             if "GOTO" in ligne:
-                for ligne in self.Extraction(ligne):
-                    self.listeCalcul .append(ligne)
+
+                self.listeCalcul .append(self.Extraction(ligne))
             #-------------------------------------------------Ajout de Ender---------------------------------------------------#
         d = self.EnderTextEdit.toPlainText()
         listeEnder = d.split("\n")
@@ -477,28 +477,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 #------------------------------------Caclul B---------------------------------#
                 B =  math.degrees(math.atan2(K,  math.sqrt(I*I+J*J))) - 90
                 B = str(round(B, 3))
-                self.X1 = X
-                self.Y1 = Y
-                self.Z1 = Z
-                self.B1 = B
-                self.C1 = C
+
                 
             self.I1 = I
             self.J1 = J
             
 
-            tulpe = (("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C), )
-         
-            
-            self.X1 = X
-            self.Y1 = Y
-            self.Z1 = Z
-            self.B1 = B
-            self.C1 = C
-            
 
-
-            return tulpe
+            return ("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C)
 
         except (IndexError,  AttributeError):
             return ("X " + str(X) + " Y " + str(Y) + " Z " + str(Z), )
