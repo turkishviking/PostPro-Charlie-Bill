@@ -420,7 +420,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 fichier.write(str(self.listeCalcul [g]) + "\n")
             #--------------------------------------------------Referme le fichier-----------------------------------------------#
             fichier.close()
-            QMessageBox.warning(None, "Enregistrement", "finish!")
+            QMessageBox.warning(None, "Enregistrement", "Youpi!!!! pov'con!")
         except IOError:
             pass
     
