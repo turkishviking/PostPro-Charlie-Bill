@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file '/home/charlie/python/PostPro/Form1.ui'
 #
-# Created: Sun Jan 27 20:33:19 2013
-#      by: PyQt4 UI code generator 4.9.1
+# Created: Thu Feb 14 19:38:59 2013
+#      by: PyQt4 UI code generator 4.9.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -27,9 +27,8 @@ class Ui_MainWindow(object):
         MainWindow.setUnifiedTitleAndToolBarOnMac(True)
         self.centralwidget = QtGui.QWidget(MainWindow)
         self.centralwidget.setObjectName(_fromUtf8("centralwidget"))
-        self.horizontalLayout = QtGui.QHBoxLayout(self.centralwidget)
-        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
         self.tabWidget = QtGui.QTabWidget(self.centralwidget)
+        self.tabWidget.setGeometry(QtCore.QRect(4, 4, 1050, 473))
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -260,11 +259,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout_11.setObjectName(_fromUtf8("horizontalLayout_11"))
         self.groupBox = QtGui.QGroupBox(self.tab_2)
         self.groupBox.setObjectName(_fromUtf8("groupBox"))
-        self.horizontalLayout_10 = QtGui.QHBoxLayout(self.groupBox)
-        self.horizontalLayout_10.setObjectName(_fromUtf8("horizontalLayout_10"))
-        self.verticalLayout_7 = QtGui.QVBoxLayout()
-        self.verticalLayout_7.setObjectName(_fromUtf8("verticalLayout_7"))
-        self.verticalLayout_6 = QtGui.QVBoxLayout()
+        self.verticalLayout_6 = QtGui.QVBoxLayout(self.groupBox)
         self.verticalLayout_6.setObjectName(_fromUtf8("verticalLayout_6"))
         self.verticalLayout_5 = QtGui.QVBoxLayout()
         self.verticalLayout_5.setObjectName(_fromUtf8("verticalLayout_5"))
@@ -345,7 +340,15 @@ class Ui_MainWindow(object):
         self.horizontalLayout_9.addWidget(self.label_4)
         self.verticalLayout_5.addLayout(self.horizontalLayout_9)
         self.verticalLayout_6.addLayout(self.verticalLayout_5)
-        self.verticalLayout_7.addLayout(self.verticalLayout_6)
+        self.horizontalLayout = QtGui.QHBoxLayout()
+        self.horizontalLayout.setObjectName(_fromUtf8("horizontalLayout"))
+        self.label_7 = QtGui.QLabel(self.groupBox)
+        self.label_7.setObjectName(_fromUtf8("label_7"))
+        self.horizontalLayout.addWidget(self.label_7)
+        self.lineEdit = QtGui.QLineEdit(self.groupBox)
+        self.lineEdit.setObjectName(_fromUtf8("lineEdit"))
+        self.horizontalLayout.addWidget(self.lineEdit)
+        self.verticalLayout_6.addLayout(self.horizontalLayout)
         self.checkBox = QtGui.QCheckBox(self.groupBox)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Fixed, QtGui.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -354,7 +357,7 @@ class Ui_MainWindow(object):
         self.checkBox.setSizePolicy(sizePolicy)
         self.checkBox.setLayoutDirection(QtCore.Qt.RightToLeft)
         self.checkBox.setObjectName(_fromUtf8("checkBox"))
-        self.verticalLayout_7.addWidget(self.checkBox)
+        self.verticalLayout_6.addWidget(self.checkBox)
         self.horizontalLayout_5 = QtGui.QHBoxLayout()
         self.horizontalLayout_5.setObjectName(_fromUtf8("horizontalLayout_5"))
         self.verticalLayout_3 = QtGui.QVBoxLayout()
@@ -400,8 +403,7 @@ class Ui_MainWindow(object):
         self.EnderTextEdit.setObjectName(_fromUtf8("EnderTextEdit"))
         self.verticalLayout_4.addWidget(self.EnderTextEdit)
         self.horizontalLayout_5.addLayout(self.verticalLayout_4)
-        self.verticalLayout_7.addLayout(self.horizontalLayout_5)
-        self.horizontalLayout_10.addLayout(self.verticalLayout_7)
+        self.verticalLayout_6.addLayout(self.horizontalLayout_5)
         self.horizontalLayout_11.addWidget(self.groupBox)
         self.kpixmapregionselectorwidget_2 = KPixmapRegionSelectorWidget(self.tab_2)
         sizePolicy = QtGui.QSizePolicy(QtGui.QSizePolicy.Expanding, QtGui.QSizePolicy.Expanding)
@@ -413,10 +415,9 @@ class Ui_MainWindow(object):
         self.kpixmapregionselectorwidget_2.setObjectName(_fromUtf8("kpixmapregionselectorwidget_2"))
         self.horizontalLayout_11.addWidget(self.kpixmapregionselectorwidget_2)
         self.tabWidget.addTab(self.tab_2, _fromUtf8(""))
-        self.horizontalLayout.addWidget(self.tabWidget)
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtGui.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 23))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 1186, 21))
         self.menubar.setObjectName(_fromUtf8("menubar"))
         self.menuFichier = QtGui.QMenu(self.menubar)
         self.menuFichier.setObjectName(_fromUtf8("menuFichier"))
@@ -455,7 +456,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuAide.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(1)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -486,6 +487,7 @@ class Ui_MainWindow(object):
         self.comboBoxCoordonees.setItemText(7, QtGui.QApplication.translate("MainWindow", "Origine piece 8", None, QtGui.QApplication.UnicodeUTF8))
         self.comboBoxCoordonees.setItemText(8, QtGui.QApplication.translate("MainWindow", "Origine piece 9", None, QtGui.QApplication.UnicodeUTF8))
         self.label_4.setText(QtGui.QApplication.translate("MainWindow", "Choix du système de coordonnées", None, QtGui.QApplication.UnicodeUTF8))
+        self.label_7.setText(QtGui.QApplication.translate("MainWindow", "Passe Mini en Z", None, QtGui.QApplication.UnicodeUTF8))
         self.checkBox.setText(QtGui.QApplication.translate("MainWindow", "Vitesse rapide pour la simulation", None, QtGui.QApplication.UnicodeUTF8))
         self.label_5.setText(QtGui.QApplication.translate("MainWindow", "Header", None, QtGui.QApplication.UnicodeUTF8))
         self.label_6.setText(QtGui.QApplication.translate("MainWindow", "Ender", None, QtGui.QApplication.UnicodeUTF8))

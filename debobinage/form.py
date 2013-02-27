@@ -37,12 +37,12 @@ class Form(QWidget, Ui_Form):
             y = x % 360
             self.pressPaper = QApplication.clipboard()
             if y < 180:
-                self.lineEdit_2.setText("G0 C-" + str(y))
-                self.pressPaper.setText("G0 C-" + str(y))
+                self.lineEdit_2.setText("G0 C" + str(x - y))
+                self.pressPaper.setText("G0 C" + str(x - y))
             else:
-                self.lineEdit_2.setText("G0 C+" + str(360 - y))
                 y = 360 - y
-                self.pressPaper.setText("G0 C+" + str(y))
+                self.lineEdit_2.setText("G0 C" + str(x + y)) 
+                self.pressPaper.setText("G0 C" + str(x + y))
         except:
             pass
             

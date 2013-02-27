@@ -6,7 +6,7 @@ Module implementing MainWindow.
 
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtCore import pyqtSignature
-from PyQt4.QtGui import QFileDialog
+from PyQt4.QtGui import QFileDialog,  QMessageBox
 import Ui_APropo
 from Ui_Form1 import Ui_MainWindow
 import math
@@ -43,6 +43,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
+        self.lineEdit.setText("0.5")
+        self.vitesseCourrante = 0
 
     @pyqtSignature("")
     def on_BouttonEffacer_clicked(self):
@@ -103,12 +105,14 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if self.checkBox.isChecked() == False:
                     ligne=ligne.replace("FEDRAT/ ", "")
                     ligne=ligne.replace(",MMPM", "")
-                    self.listeCalcul .append("G1 F" + (ligne))
+                    #self.listeCalcul .append("G1 F" + (ligne))
+                    self.vitesse = float(ligne)
 
                     
             #----------------------------------------------------Extraction-----------------------------------------------------#
             if "GOTO" in ligne:
-                self.listeCalcul .append(self.Extraction(ligne))
+                for ligne in self.Extraction(ligne):
+                    self.listeCalcul .append(ligne)
             #-------------------------------------------------Ajout de Ender---------------------------------------------------#
         d = self.EnderTextEdit.toPlainText()
         listeEnder = d.split("\n")
@@ -416,6 +420,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 fichier.write(str(self.listeCalcul [g]) + "\n")
             #--------------------------------------------------Referme le fichier-----------------------------------------------#
             fichier.close()
+            QMessageBox.warning(None, "Enregistrement", "finish!")
         except IOError:
             pass
     
@@ -442,7 +447,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         #------------------------------------Caclul Y---------------------------------#
         Y = str(round(Y, 3))
         #------------------------------------Caclul Z---------------------------------#
-        Z = str(round(Z, 3))
+        Z = str(round(Z, 2))
         
         
         try:
@@ -461,20 +466,51 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.Stock_C = self.Stock_C -360    
 
                 C = (self.Stock_C + math.degrees(math.atan2(J, I)))
+                C = str(round(C, 3))
+                #------------------------------------Caclul B---------------------------------#
+                B = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+                B = str(round(B, 3))
+                
             except AttributeError:
-                C = math.degrees(math.atan2(J, I))
-                    
-
-            C = str(round(C, 3))
+                C = math.degrees(math.atan2(J, I))  
+                C = str(round(C, 3))
+                #------------------------------------Caclul B---------------------------------#
+                B = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+                B = str(round(B, 3))
+                self.X1 = X
+                self.Y1 = Y
+                self.Z1 = Z
+                self.B1 = B
+                self.C1 = C
+                
             self.I1 = I
             self.J1 = J
-            #------------------------------------Caclul A---------------------------------#
-            A = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
-            A = str(round(A, 3))
-            return ("X " + X + " Y " + Y + " Z " + Z + " A " + A + " C " + C)
+            
+            if abs(float(self.Z1) - float(Z)) < float(self.lineEdit.text()):
+                Z = self.Z1
+            if self.Z1 != Z:
+                tulpe = (("G1 F 400 "),  ("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C))
+                self.vitesseCourrante = 400.00
+            else:
+                if self.vitesse != self.vitesseCourrante:
+                    tulpe = (("G1 F " + str(self.vitesse)), ("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C))
+                    self.vitesseCourrante = self.vitesse
+                else:
+                    tulpe = (("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C), )
+         
+            
+            self.X1 = X
+            self.Y1 = Y
+            self.Z1 = Z
+            self.B1 = B
+            self.C1 = C
+            
 
-        except IndexError:
-            return ("X " + X + " Y " + Y + " Z " + Z)
+
+            return tulpe
+
+        except (IndexError,  AttributeError):
+            return ("X " + str(X) + " Y " + str(Y) + " Z " + str(Z), )
 
 
         
