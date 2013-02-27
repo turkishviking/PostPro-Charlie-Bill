@@ -475,7 +475,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 C = math.degrees(math.atan2(J, I))  
                 C = str(round(C, 3))
                 #------------------------------------Caclul B---------------------------------#
-                B = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+                B =  math.degrees(math.atan2(K,  math.sqrt(I*I+J*J))) - 90
                 B = str(round(B, 3))
                 self.X1 = X
                 self.Y1 = Y
@@ -486,17 +486,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
             self.I1 = I
             self.J1 = J
             
-            if abs(float(self.Z1) - float(Z)) < float(self.lineEdit.text()):
-                Z = self.Z1
-            if self.Z1 != Z:
-                tulpe = (("G1 F 400 "),  ("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C))
-                self.vitesseCourrante = 400.00
-            else:
-                if self.vitesse != self.vitesseCourrante:
-                    tulpe = (("G1 F " + str(self.vitesse)), ("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C))
-                    self.vitesseCourrante = self.vitesse
-                else:
-                    tulpe = (("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C), )
+
+            tulpe = (("X " + X + " Y " + Y + " Z " + Z + " B " + B + " C " + C), )
          
             
             self.X1 = X
