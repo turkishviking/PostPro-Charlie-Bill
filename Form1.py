@@ -468,7 +468,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 C = (self.Stock_C + math.degrees(math.atan2(J, I)))
                 C = str(round(C, 3))
                 #------------------------------------Caclul B---------------------------------#
-                B = 90 - math.degrees(math.atan2(K,  math.sqrt(I*I+J*J)))
+                B = math.degrees(math.atan2(K,  math.sqrt(I*I+J*J))) - 90
                 B = str(round(B, 3))
                 
             except AttributeError:
