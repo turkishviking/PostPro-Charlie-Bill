@@ -105,7 +105,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                 if self.checkBox.isChecked() == False:
                     ligne=ligne.replace("FEDRAT/ ", "")
                     ligne=ligne.replace(",MMPM", "")
-                    #self.listeCalcul .append("G1 F" + (ligne))
+                    self.listeCalcul .append("G1 F" + (ligne))
                     self.vitesse = float(ligne)
 
                     
