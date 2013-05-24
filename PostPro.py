@@ -3,6 +3,8 @@
 from PyQt4 import QtGui
 from Form1 import MainWindow
 import sys
+import os
+
 if __name__ == "__main__":
    app = QtGui.QApplication(sys.argv)
    app.setApplicationName("PostPro--Charlybill")

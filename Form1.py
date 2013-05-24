@@ -4,6 +4,9 @@
 Module implementing MainWindow.
 """
 
+
+import os, sys
+sys.path.append(os.getcwd()+ "/Objects")
 from PyQt4.QtGui import QMainWindow
 from PyQt4.QtCore import pyqtSignature
 from PyQt4.QtGui import QFileDialog,  QMessageBox
@@ -12,10 +15,11 @@ from Ui_Form1 import Ui_MainWindow
 import math
 from decimal import Decimal
 import Ui_test
-import os
 from PyQt4 import QtCore, QtGui
 import OGL
 import AudioPlayer
+
+
 
 class MainWindow(QMainWindow, Ui_MainWindow):
     """
