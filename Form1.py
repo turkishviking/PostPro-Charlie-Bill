@@ -43,7 +43,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.connect(self.InputTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollInput)
         self.connect(self.TransformTextEdit, QtCore.SIGNAL("scrol(int)"),  self.scrollTransform)
         self.BoutonPrevusalisation.setEnabled(False)
-        self.lineEdit.setText("0.5")
+       
         self.vitesseCourrante = 0
 
     @pyqtSignature("")
@@ -94,13 +94,18 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         listeT = self.liste
         for ligne in listeT:
             self.progressBar.setValue( self.progressBar.value()+1)
+            
+            if "SPINDL/" in ligne:
+                ligne = ligne.replace("SPINDL/",  "").replace(" ",  "").replace(",RPM,CLW",  "")
+                self.listeCalcul.append("M3 S" + ligne)
+                
+            
             if "LOADTL/" in ligne:
 
                 self.listeCalcul .append("T" + ligne.replace("LOADTL/", "") + " G43")
                 self.listeCalcul .append("M6")
-                self.listeCalcul .append("G1 F1000")
+                self.listeCalcul .append("G1 W0 F1000")
 
-                
             if "FEDRAT/" in ligne:   
                 if self.checkBox.isChecked() == False:
                     ligne=ligne.replace("FEDRAT/", "").replace(" ", "")
@@ -443,9 +448,9 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         
                     
         #------------------------------------Caclul X---------------------------------#
-        X = str(round(X, 3))
+        X = str(round(X, 2))
         #------------------------------------Caclul Y---------------------------------#
-        Y = str(round(Y, 3))
+        Y = str(round(Y, 2))
         #------------------------------------Caclul Z---------------------------------#
         Z = str(round(Z, 2))
         
@@ -466,17 +471,17 @@ class MainWindow(QMainWindow, Ui_MainWindow):
                         self.Stock_C = self.Stock_C -360    
 
                 C = (self.Stock_C + math.degrees(math.atan2(J, I)))
-                C = str(round(C, 3))
+                C = str(round(C, 2))
                 #------------------------------------Caclul B---------------------------------#
                 B = math.degrees(math.atan2(K,  math.sqrt(I*I+J*J))) - 90
-                B = str(round(B, 3))
+                B = str(round(B, 2))
                 
             except AttributeError:
                 C = math.degrees(math.atan2(J, I))  
-                C = str(round(C, 3))
+                C = str(round(C, 2))
                 #------------------------------------Caclul B---------------------------------#
                 B =  math.degrees(math.atan2(K,  math.sqrt(I*I+J*J))) - 90
-                B = str(round(B, 3))
+                B = str(round(B, 2))
 
                 
             self.I1 = I
